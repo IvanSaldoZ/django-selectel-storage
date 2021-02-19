@@ -22,6 +22,8 @@ class SelectelStorage(storage.Storage):
         return base.ContentFile(self.container.open(name).read())
 
     def _save(self, name, content):
+        if self.location():
+            self.container.create_folder(self.location())
         self.container.save(name, content, metadata=None)
         return name
 

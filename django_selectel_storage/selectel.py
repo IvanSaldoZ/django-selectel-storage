@@ -125,7 +125,11 @@ class Container:
 
     def create_folder(self, folder_name):
         """Создаем папку, если указано"""
-        self.perform_request('put', folder_name, raise_exception=True, ContentType="application/directory", ContentLength=0)
+        headers = {
+            'Content-Type': 'application/directory',
+            'ContentLength': '0',
+        }
+        self.perform_request('put', folder_name, raise_exception=True, headers=headers)
         return folder_name
 
     def delete(self, key):
