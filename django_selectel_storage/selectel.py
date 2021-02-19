@@ -119,8 +119,14 @@ class Container:
                                     stream=True).raw
 
     def save(self, key, content, metadata=None):
+        self.create_folder('new_folder')
         self.perform_request('put', key, data=content, raise_exception=True)
         return key
+
+    def create_folder(self, folder_name):
+        """Создаем папку, если указано"""
+        self.perform_request('put', folder_name, raise_exception=True, ContentType="application/directory", ContentLength=0)
+        return folder_name
 
     def delete(self, key):
         self.perform_request('delete', key, raise_exception=False)

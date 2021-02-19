@@ -12,6 +12,12 @@ class SelectelStorage(storage.Storage):
         self.config = read_config(args, kwargs)
         self.container = Container(self.config)
 
+    def base_location(self):
+        return self._location
+
+    def location(self):
+        return self.base_location()
+
     def _open(self, name, mode='rb'):
         return base.ContentFile(self.container.open(name).read())
 
