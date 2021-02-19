@@ -118,8 +118,9 @@ class Container:
         return self.perform_request('get', key, raise_exception=True,
                                     stream=True).raw
 
-    def save(self, key, content, metadata=None):
-        self.create_folder('new_folder')
+    def save(self, key, content, folder=None, metadata=None):
+        if folder:
+            self.create_folder(folder)
         self.perform_request('put', key, data=content, raise_exception=True)
         return key
 

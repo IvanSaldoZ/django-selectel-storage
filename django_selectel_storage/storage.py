@@ -23,8 +23,8 @@ class SelectelStorage(storage.Storage):
 
     def _save(self, name, content):
         if self.location():
-            self.container.create_folder(self.location())
-        self.container.save(name, content, metadata=None)
+            location = self.location()
+        self.container.save(name, content, folder=location, metadata=None)
         return name
 
     def delete(self, name):
