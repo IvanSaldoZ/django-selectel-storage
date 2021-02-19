@@ -7,8 +7,8 @@ from .utils import read_config
 class SelectelStorage(storage.Storage):
     """Selectel storage class"""
 
-    def __init__(self, *args, location=None, **kwargs):
-        self._location = location  # Папка, в которую загружаем
+    def __init__(self, *args, **kwargs):
+        self._location = kwargs.get('location')  # Папка, в которую загружаем
         self.config = read_config(args, kwargs)
         self.container = Container(self.config)
 
