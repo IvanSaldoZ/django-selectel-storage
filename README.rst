@@ -50,7 +50,7 @@ Installation
 
 .. code:: bash
 
-    pip install git+https://github.com/IvanSaldoZ/django-selectel-storage-saldoz.git
+    pip install git+https://github.com/IvanSaldoZ/django-selectel-storage.git
 
 
 2. Add to your settings module:
