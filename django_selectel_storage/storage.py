@@ -18,6 +18,9 @@ class SelectelStorage(storage.Storage):
     def location(self):
         return self.base_location()
 
+    def set_location(self, location):
+        self._location = location
+
     def _open(self, name, mode='rb'):
         return base.ContentFile(self.container.open(name).read())
 
