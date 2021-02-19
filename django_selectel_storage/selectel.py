@@ -121,7 +121,7 @@ class Container:
     def save(self, key, content, folder=None, metadata=None):
         if folder:
             self.create_folder(folder)
-        self.perform_request('put', key, data=content, raise_exception=True)
+        self.perform_request('put', folder+'/'+key, data=content, raise_exception=True)
         return key
 
     def create_folder(self, folder_name):
