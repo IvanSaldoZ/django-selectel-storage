@@ -24,6 +24,8 @@ class SelectelStorage(storage.Storage):
     def _save(self, name, content):
         if self.location():
             location = self.location()
+        else:
+            location = None
         self.container.save(name, content, folder=location, metadata=None)
         return name
 
